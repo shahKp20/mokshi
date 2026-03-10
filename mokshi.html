@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>For Mokshi ❤️</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Poppins;
+        background: linear-gradient(135deg, #ffdce8, #e6f0ff);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      /* floating hearts */
+
+      .heart {
+        position: absolute;
+        color: #ff4d6d;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh);
+          opacity: 0;
+        }
+      }
+
+      /* container */
+
+      .box {
+        background: white;
+        padding: 45px;
+        border-radius: 20px;
+        max-width: 520px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      h1 {
+        font-family: Dancing Script;
+        font-size: 42px;
+        color: #ff4d6d;
+      }
+
+      .quote {
+        font-size: 18px;
+        line-height: 1.7;
+        min-height: 120px;
+      }
+
+      .mokshi {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+
+      .mokshi span {
+        color: #ff4d6d;
+        font-weight: 600;
+      }
+
+      /* buttons */
+
+      button {
+        padding: 12px 28px;
+        border: none;
+        border-radius: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      .yes {
+        background: #ff4d6d;
+        color: white;
+      }
+
+      .no {
+        background: #aaa;
+        color: white;
+        position: absolute;
+      }
+
+      /* reveal */
+
+      .hidden {
+        display: none;
+      }
+
+      .number {
+        font-size: 22px;
+        margin-top: 15px;
+      }
+
+      .whatsapp {
+        background: #25d366;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      /* floating hearts */
+
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.animationDuration = 3 + Math.random() * 5 + "s";
+
+        document.body.appendChild(heart);
+      }
+    </script>
+
+    <div class="box" id="page1">
+      <h1>Mokshi Shah ❤️</h1>
+
+      <div class="quote" id="quote"></div>
+
+      <div class="mokshi">
+        <span>Mokshi</span> — the name that feels like peace to my heart,<br />
+        like destiny softly whispering<br />
+        "this is the person you were meant to find."
+      </div>
+
+      <br />
+
+      <h3>Will you be my forever?</h3>
+
+      <button class="yes" onclick="page2()">YES 💖</button>
+
+      <button class="no" id="noBtn">NO</button>
+    </div>
+
+    <div class="box hidden" id="page2">
+      <h1>Wait… 🥺</h1>
+
+      <p>
+        Before my heart explodes from happiness...<br /><br />
+
+        Are you absolutely sure you accept this proposal?
+      </p>
+
+      <button class="yes" onclick="page3()">Yes I Accept ❤️</button>
+    </div>
+
+    <div class="box hidden" id="page3">
+      <h1>You Made My World 🌍❤️</h1>
+
+      <p>
+        Reveal my number and message me on WhatsApp so we can start our
+        beautiful story.
+      </p>
+
+      <button onclick="reveal()">Reveal My Number</button>
+
+      <div id="numBox" class="hidden">
+        <div class="number">+91 XXXXX XXXXX</div>
+
+        <a href="https://wa.me/917990450792" target="_blank">
+          <button class="whatsapp">Message On WhatsApp 💬</button>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      /* typing quotes */
+
+      let text = `
+
+Out of billions of people in this world...
+
+Somehow my heart found you.
+
+Maybe it's destiny.
+Maybe it's magic.
+
+Or maybe...
+
+You were always meant to be my forever.
+
+`;
+
+      let i = 0;
+
+      function typing() {
+        if (i < text.length) {
+          document.getElementById("quote").innerHTML += text.charAt(i);
+
+          i++;
+
+          setTimeout(typing, 35);
+        }
+      }
+
+      typing();
+
+      /* pages */
+
+      function page2() {
+        document.getElementById("page1").classList.add("hidden");
+        document.getElementById("page2").classList.remove("hidden");
+      }
+
+      function page3() {
+        document.getElementById("page2").classList.add("hidden");
+        document.getElementById("page3").classList.remove("hidden");
+      }
+
+      function reveal() {
+        document.getElementById("numBox").classList.remove("hidden");
+      }
+
+      /* running NO button */
+
+      let noBtn = document.getElementById("noBtn");
+
+      noBtn.addEventListener("mouseover", () => {
+        noBtn.style.top = Math.random() * 80 + "%";
+        noBtn.style.left = Math.random() * 80 + "%";
+      });
+    </script>
+  </body>
+</html>
